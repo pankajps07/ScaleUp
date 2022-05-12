@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=header::link>
+<meta charset="ISO-8859-1">
+</head>
+<body class="body_bg sc5">
+
+	<nav th:replace=header::navs></nav>
+
+	<section th:each="product : ${product}">
+
+
+		<div class="row container">
+
+			<div class="col-md-5 m-2">
+				<div class="card">
+					<div class="card">
+						<div class="card-body">
+							<img class="img-fluid pro_img" th:src="${product.p_img}"
+								alt="Card image">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="offset-1 col-md-5 mt-4 des">
+				<span class="desc_pro_txt" th:text="${product.p_details}">Fresh
+					Tomato-Red</span> <br> <span>Price: <strong
+					th:text="${product.p_price}">Rs 30
+						<small class="desc_pricetxt " th:text="${product.p_price}">(Rs.30/Kg)</small>
+				</strong>
+				</span>
+
+				<div class="input-group mb-3 mt-3  qty_input_group">
+					<div class="input-group-prepend">
+						<button class="input-group-text desc_qty_minus">-</button>
+					</div>
+					<input type="number" class="form-control desc_pro_qty" min="1"
+						th:value=${product.p_qty} placeholder="Qty" readonly>
+					<div class="input-group-append">
+						<button class="input-group-text desc_qty_plus">+</button>
+					</div>
+				</div>
+				<span><small class="text-success font-weight-bold mx-2">Product
+						Available</small></span> <br>
+				<span class="ml-2">Total Price :<span class="total_price font-weight-bold" ></span></span>
+				<form th:action="@{/addcart}" method="post" th:object="${cart}">
+			
+				<input type="text" th:value="${product.pid}" name="pid" class="pid" hidden>
+					<input type="text" th:value="${product.p_name}" name="p_name" class="p_name" hidden>
+					<input type="text" th:value="${product.p_img}" name="p_img" class="p_img" hidden>
+				
+					<input type="text" th:value="${product.p_price}" name="p_price" class="cart_item_price p_price" hidden>
+					<input type="text" th:value="${product.m_id}" name="m_id" class="m_id" hidden > <input
+						type="text" th:value="${product.p_category}" name="p_category" class="p_category" hidden>
+					<input type="text" th:value="${product.p_qty}" name="p_qty" hidden
+						class="desc_qty p_qty" > 
+						<input type="text" th:value="${product.p_details}" name="p_details" class="p_details" hidden>
+						<input type="text"  name="total_price" class="desc_price_value" hidden>
+						<input th:value="${session.name}" name="uname" class="uname" hidden>
+					<div class="desc_add_cart">
+						<button type="submit" class="pro_cart_btn">
+						<small>Add To Cart</small>
+						</button>
+					</div>
+				</form>
+
+
+			
+
+			</div>
+		</div>
+		<hr>
+
+
+	</section>
+
+
+
+	<footer th:replace="footer::js"></footer>
+</body>
+</html>

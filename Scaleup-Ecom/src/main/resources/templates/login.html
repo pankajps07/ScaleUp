@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=header::link>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body class="sc5">
+	<h3 class="text-center mt-5 text-primary font-weight-bold">Scale-Up</h3>
+
+	<section class="login_bg">
+		
+		<div class="row">
+
+			<div class="col-md-6">
+				<img alt="d" th:src="@{img/l1.jpg}" width="390px" height="390px">
+			</div>
+			<div class="col-md-6 login_input">
+				<h4 class="text-center font-weight-bold text-success">Login-Here
+					!</h4>
+					
+				<form th:action="@{/onlogin}" th:object="${customer}" method="post">
+					<input type="text" class="form-control my-2" name="email" id="email"
+						placeholder="Enter UserName" required>
+			<input type="password" class="form-control password" id="password" name="password" placeholder="Enter Password" required>
+						<div th:if="${(msg)=='i'}" class="text-danger ml-5 er_msg">Invalid Credentials</div>
+					<button type="submit" id="login">Login</button>
+				</form>
+				<div class="text-center my-3" style="cursor: pointer">
+					<a th:href="@{/signup}" class="text-primary"><small>Don't Have an Account ?</small></a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<footer th:replace=footer::js></footer>
+</body>
+</html>

@@ -1,0 +1,276 @@
+@import
+	url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap')
+	;
+
+* {
+	font-family: 'Poppins', sans-serif;
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	scroll-behaviour: smooth;
+	text-decoration:none;
+	cusrsor:pointer;
+}
+
+/* Scroll 5 */
+.sc5::-webkit-scrollbar {
+  width: 7px;
+  height: 15px;
+}
+.sc5::-webkit-scrollbar-track {
+  border-radius: 7px;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.sc5::-webkit-scrollbar-thumb {
+  background-image: linear-gradient(45deg, #00aeff, #a68eff);
+  border-radius: 10px;
+	-webkit-box-shadow: rgba(0,0,0,.12) 0 3px 13px 1px;
+}
+.body_bg{
+	background-color:#ededed;
+}
+
+.navbar {
+	box-shadow: 0px 0px 5px 2px black;
+	margin-bottom: 5px;
+}
+.nav-item:hover{
+	font-size:1rem;
+	transition:0.3s;
+	border-bottom:2px solid red;
+}
+.navbar .logout_href{
+	display: inline-block;
+    width: 100px;
+    white-space: nowrap;
+    overflow: hidden !important;
+    text-overflow: ellipsis;
+    position:relative;
+    top:8px;
+	
+}
+.navbar .logout_href:hover{
+	color:red;
+	transition:0.3s;
+}
+.nav-item .badge-pill{
+	position:relative;
+	left:9px;
+	top:-6px;
+}
+/* 
+---------------------products------------------------------- */
+.pro_row_main {
+	margin: 6px;
+}
+
+.pro_head {
+	letter-spacing: 2px;
+}
+
+.pro_img {
+	padding: 5px;
+	
+}
+
+.pro_row {
+	padding: 8px;
+}
+
+.pro_card {
+	padding: 2px;
+	box-shadow: inset 0px 0px 4px 2px pink;
+	
+}
+.pro_card:hover {
+	padding: 0px;
+	box-shadow: inset 0px 0px 4px 2px pink;
+	transition:0.3s;
+	
+}
+.small_price{
+	font-size:0.7rem;
+	font-weight:bold;
+}
+.pro_cart_btn {
+	border: none;
+	background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+	width: 120px;
+	height: 30px;
+	border-radius: 35px;
+	color: #fff;
+	font-weight:bold;
+}
+.view_btn{
+	border: none;
+	background-image: linear-gradient(to top, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+	width: 120px;
+	height: 30px;
+	border-radius: 35px;
+	color: #fff;
+	font-weight:bold;
+}
+.view_btn:hover{
+	background-image: linear-gradient(to bottom, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+	box-shadow:0px 0px 5px 3px  #ff9a9e;
+	color:yellow;
+	transition:0.5s;
+}
+.pro_cart_btn:hover{
+	background-image: linear-gradient(to bottom, #ff9a9e 0%, #fecfef 99%, #fecfef 100%);
+	box-shadow:0px 0px 5px 3px  #ff9a9e;
+	color:yellow;
+	transition:0.5s;
+}
+/* 
+====================================================description page====================================== */
+.desc_pro_txt{
+	font-weight:bold;
+	letter-spacing:3px;
+	font-size:1.2rem;
+}
+.desc_pricetxt{
+	font-size:0.6rem;
+}
+
+.input-group-prepend .desc_qty_minus{
+	background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+}
+.input-group-append .desc_qty_plus{
+	background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+}
+.desc_cart_btn{
+	background-image: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+	border:none;
+	padding:2px;
+	border-radius:15px;
+	width:130px;
+	color:#fff;
+	font-size:0.9rem;
+	font-weight:900;
+
+}
+.desc_cart_btn:hover{
+	background-image: linear-gradient(-45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%);
+	transition:0.3s;
+		box-shadow:0px 0px 3px 1px #ff9a9e;
+}
+.des .qty_input_group{
+	width:120px;
+}
+/*=============================Login Page=======================================================*/
+.login_bg{
+	width:60%;
+	height:400px;
+	background:#f6f6f6;
+	margin:50px auto;
+	padding:5px;
+	box-shadow:0px 0px 5px 2px #999;
+	border-radius:15px;
+	
+}
+.login_input{
+	padding:10px;
+	margin:60px 0px;
+}
+.login_input input{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:20px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	padding-left:15px;
+				
+}
+
+.login_input input:focus{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:20px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	
+}
+.signup_input{
+	padding:10px;
+	margin:10px 0px;
+}
+.signup_input input{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:10px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	padding-left:15px;
+}
+.signup_input textarea{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:5px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	padding-left:15px;
+	padding-top:5px;
+}
+.signup_input input:focus{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:10px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	padding-left:15px;
+	
+}
+.signup_input textarea:focus{
+	border:none;
+	background:none;
+	border-radius:15px;
+	margin:5px 50px;	
+	box-shadow:2px 2px 2px 1px #999;
+	width:260px;
+	padding-left:15px;
+	padding-top:5px;
+}
+.login_input button{
+	background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border:none;
+	padding:5px;
+	border-radius:12px;
+	width:170px;
+	margin:0px 84px;
+	color:#fff;
+	font-weight:bold;
+}
+.login_input button:hover{
+	background-image: linear-gradient(-135deg, #667eea 0%, #764ba2 100%);
+	transition:0.3s;
+}
+.signup_input button{
+	background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	border:none;
+	padding:5px;
+	border-radius:12px;
+	width:170px;
+	margin:0px 84px;
+	color:#fff;
+	font-weight:bold;
+}
+.signup_input button:hover{
+	background-image: linear-gradient(-135deg, #667eea 0%, #764ba2 100%);
+	transition:0.3s;
+}
+/* 
+-------------------------------------Footer------------------------------------------------------- */
+
+footer{
+	width:100%;
+	height:250px;
+	background:#999;
+	box-shadow:inset 0px 0px 5px 3px #777;
+	margin-top:10px;
+}

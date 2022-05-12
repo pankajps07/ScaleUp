@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace=header::link>
+<meta charset="ISO-8859-1">
+</head>
+<body class="sc5">
+	<section class="body_bg">
+		<nav th:replace=header::navs></nav>
+
+		<div class="container m-5 ">
+
+			<table class="table table-hover m-5 bg-light" style="box-shadow:0px 0px 3px 2px #9999">
+				<thead>
+					<tr>
+						<th>Product Name</th>
+						<th>Product Image</th>
+						<th>Description</th>
+						<th>Product Price</th>
+						<th>Product Quantity</th>
+						<th>Total Price</th>
+						
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="product : ${cartProducts}">
+						<td th:text="${product.p_name}"></td>
+						<td><img th:src="${product.p_img}" width="100px" height="50px"></td>
+						<td th:text="${product.p_details}"></td>
+						<td th:text="${product.p_price + ' .Rs'}"></td>
+						<td th:text="${product.p_qty}"></td>
+						
+						<td th:text="${product.total_price}"></td>
+					</tr>
+					
+				</tbody>
+			</table>
+			
+		</div>
+
+	</section>
+		
+		
+		
+	<footer th:replace="footer::js"></footer>
+</body>
+</html>
+
+

@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+
+
+		<footer id="about" th:fragment="js">
+			<div class="footer_about text-center mt-3">
+				<h2>
+					<u>About Us</u>
+				</h2>
+			</div>
+			<section class="cart_modal">
+
+
+
+				<!-- The Modal -->
+				<div class="modal fade" id="myCart">
+					<div class="modal-dialog">
+						<div class="modal-content">
+
+							<!-- Modal Header -->
+							<div class="modal-header">
+								<h4 class="modal-title text-danger mx-3">ScaleUp-Cart</h4>
+								<button type="button" class="close" data-dismiss="modal">&times;</button>
+							</div>
+
+							<!-- Modal body -->
+							<div class="modal-body">
+								<small>
+										<table class="table table-hover  bg-light"	style="box-shadow: 0px 0px 3px 2px #9999">
+											<thead>
+												<tr>
+													<th>Product Name</th>
+													<th>Product Image</th>
+													<th>Product Price</th>
+													<th>Product Quantity</th>
+													<th>Total Price</th>
+													<th>Action</th>
+
+												</tr>
+											</thead>
+											<tbody>
+												<tr th:each="product : ${cartProducts}">
+													<td th:text="${product.p_name}"></td>
+													<td><img th:src="${product.p_img}" width="100px"
+														height="50px"></td>
+												<td th:text="${product.p_price + ' .Rs'}"></td>
+													<td th:text="${product.p_qty}"></td>
+
+													<td th:text="${product.total_price}"></td>
+													<td>
+												
+													<a class="text-danger pointer delete_item" style="cursor:pointer" th:href="@{/delete/{cid}(cid=${product.cid})}">
+													<small>Delete</small>
+													</a>
+													</td>
+													
+													
+												</tr>
+
+											</tbody>
+
+										</table>
+
+								
+
+								</small>
+
+							</div>
+
+							<!-- Modal footer -->
+							<div class="modal-footer">
+								<div class="mr-5">
+									Total Price: <strong class="t_price" th:text="${total + ' .Rs'}">90.Rs</strong>
+								</div>
+								<a th:href="@{/order}"><button type="button" class="btn btn-warning">Place
+									Order</button></a>
+								<button type="button" class="btn btn-danger"
+									data-dismiss="modal">Close</button>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			
+				<div class="msg" th:text="${msg}"></div>
+			</section>
+
+
+
+			<script
+				src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+
+			<!-- Popper JS -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+
+			<!-- Latest compiled JavaScript -->
+			<script
+				src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="https://code.jquery.com/jquery-3.6.0.min.js"
+				integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+				crossorigin="anonymous"></script>
+			<!-- /*===============================jQuery==============================================*/	 -->
+			<script th:inline="javascript">
+				$(document)
+						.ready(
+								function() {
+									$(".msg").hide();
+
+									let v = parseInt($('.desc_pro_qty').val());
+									let price = parseInt($('.cart_item_price')
+											.val());
+
+									$('.desc_pro_qty').val(v);
+
+									$('.desc_pricetxt').html(price * v + ".Rs");
+									$('.desc_price_value').val(price * v);
+									$('.cart_item_price').html(
+											price * v + " .Rs");
+									$(".total_price").html(price * v + " .Rs");
+									$(".desc_qty_plus").click(
+											function() {
+
+												v = parseInt(v + 1);
+
+												$('.desc_pro_qty').val(v);
+
+												$('.desc_pricetxt').html(
+														price * v + " .Rs");
+												$('.desc_price_value').val(
+														price * v);
+												$('.cart_item_price').html(
+														price * v + " .Rs");
+												$(".total_price").html(
+														price * v + " .Rs");
+											});
+
+									$(".desc_qty_minus")
+											.click(
+													function() {
+														v = parseInt(v - 1);
+														if (v <= 1) {
+															v = 1;
+															$('.desc_pro_qty')
+																	.val(v);
+															$('.desc_pricetxt')
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+															$(
+																	'.desc_price_value')
+																	.val(
+																			price
+																					* v);
+															$(
+																	'.cart_item_price')
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+															$(".total_price")
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+
+														} else {
+															$('.desc_pro_qty')
+																	.val(v);
+															$('.desc_pricetxt')
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+															$(
+																	'.desc_price_value')
+																	.val(
+																			price
+																					* v);
+															$(
+																	'.cart_item_price')
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+															$(".total_price")
+																	.html(
+																			price
+																					* v
+																					+ " .Rs");
+
+														}
+
+													});
+
+									/*=========Signup Validation  */
+									$("#signup")
+											.click(
+													function(e) {
+
+														e.preventDefault();
+
+														var name = $("#name")
+																.val();
+														var mno = $("#mno")
+																.val();
+														var email = $("#email")
+																.val();
+														var address = $(
+																"#address")
+																.val();
+														var password = $(
+																"#password")
+																.val();
+
+														var a = [ $('#name'),
+																$('#mno'),
+																$('#email'),
+																$('#address'),
+																$('#password') ];
+														var all = [ name, mno,
+																email, address,
+																password ];
+														if (all[0] == ""
+																&& all[1] == ""
+																&& all[2] == ""
+																&& all[3] == ""
+																&& all[4] == "") {
+															a[0]
+																	.addClass('is-invalid');
+															a[1]
+																	.addClass('is-invalid');
+															a[2]
+																	.addClass('is-invalid');
+															a[3]
+																	.addClass('is-invalid');
+															a[4]
+																	.addClass('is-invalid');
+															$(".msg")
+																	.html(
+																			"<span></span>")
+
+														} else {
+															if (all[0] == "") {
+																a[0]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[0]
+																		.addClass('is-valid');
+																a[0]
+																		.removeClass('is-invalid');
+															}
+
+															if (all[1] == "") {
+																a[1]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[1]
+																		.addClass('is-valid');
+																a[1]
+																		.removeClass('is-invalid');
+															}
+															if (all[2] == "") {
+																a[2]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[2]
+																		.addClass('is-valid');
+																a[2]
+																		.removeClass('is-invalid');
+															}
+															if (all[3] == "") {
+																a[3]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[3]
+																		.addClass('is-valid');
+																a[3]
+																		.removeClass('is-invalid');
+															}
+															if (all[4] == "") {
+																a[4]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[4]
+																		.addClass('is-valid');
+																a[4]
+																		.removeClass('is-invalid');
+															}
+
+															$
+																	.ajax({
+																		url : "/onsignup",
+																		method : "POST",
+																		data : {
+																			"name" : name,
+																			"mno" : mno,
+																			"email" : email,
+																			"address" : address,
+																			"password" : password
+
+																		},
+																		success : function(
+																				e) {
+																			if (e == 1) {
+																				alert("Email Already Exist");
+																			} else if (e == 0) {
+																				alert("Registered Successfully");
+																				window.location.href = "/login";
+																			} else {
+																				alert("something Went Wrong");
+																			}
+																		}
+
+																	});
+														}
+
+													});
+									/*===============================Login===============================================  */
+									$("#login")
+											.click(
+													function(e) {
+														e.preventDefault();
+														var password = $(
+																"#password")
+																.val();
+														var email = $("#email")
+																.val();
+
+														var a = [ $('#email'),
+																$('#password') ];
+														var all = [ email,
+																password ];
+														if (all[0] == ""
+																&& all[1] == "") {
+															a[0]
+																	.addClass('is-invalid');
+															a[1]
+																	.addClass('is-invalid');
+
+														} else {
+															if (all[0] == "") {
+																a[0]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[0]
+																		.addClass('is-valid');
+																a[0]
+																		.removeClass('is-invalid');
+															}
+
+															if (all[1] == "") {
+																a[1]
+																		.addClass('is-invalid');
+																return false;
+															} else {
+																a[1]
+																		.addClass('is-valid');
+																a[1]
+																		.removeClass('is-invalid');
+															}
+
+															$
+																	.ajax({
+																		url : "/onlogin",
+																		method : "POST",
+																		data : {
+
+																			"email" : email,
+																			"password" : password
+
+																		},
+																		success : function(
+																				e) {
+																			if (e == 1) {
+																				window.location.href = "/";
+																			} else if (e == 0) {
+
+																				alert("Invalid Credentials")
+																				window.location.reload();
+																			} else {
+																				alert("something went wrong")
+																				window.location.reload();
+																			}
+																		}
+
+																	});
+
+														}
+													});
+
+									/* ======================cart============================ */
+
+									$(".pro_cart_btn")
+											.click(
+													function(e) {
+														e.preventDefault();
+														var p_name = $(
+																".p_name")
+																.val();
+														var p_price = $(
+																".p_price")
+																.val();
+														var p_img = $(".p_img")
+																.val();
+														var m_id = $(".m_id")
+																.val();
+														var p_category = $(
+																".p_category")
+																.val();
+														var p_details = $(
+																".p_details")
+																.val();
+														var total_price = $(
+																".desc_price_value")
+																.val();
+														var uname = $(".uname")
+																.val();
+														var pid = $(".pid")
+																.val();
+														var p_qty = $(".p_qty")
+																.val();
+
+														$
+																.ajax({
+																	url : "/addcart",
+																	method : "POST",
+																	data : {
+																		"pid" : pid,
+																		"p_name" : p_name,
+																		"p_price" : p_price,
+																		"p_img" : p_img,
+																		"m_id" : m_id,
+																		"p_category" : p_category,
+																		"p_details" : p_details,
+																		"total_price" : total_price,
+																		"uname" : uname,
+																		"p_qty" : p_qty
+																	},
+																	success : function(
+																			e) {
+																		if (e == 1) {
+																			alert("Product Already added");
+																			window.location.reload();
+																		} else if (e == 0) {
+																			alert("Product added Successfully");
+																			window.location.reload();
+																		} else {
+																			alert("Something Went Wrong ! Unable to add to cart !")
+																			window.location.reload();
+																		}
+																	}
+																});
+													});
+									
+									 $(".delete_item").click(function(){
+										    if (!confirm("Do you want to delete")){
+										      return false;
+										    }
+										  });
+
+								});
+			</script>
+		</footer>
+</body>
+</html>

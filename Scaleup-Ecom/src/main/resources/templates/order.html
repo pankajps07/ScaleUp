@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::link">
+<title>Insert title here</title>
+</head>
+<body>
+<nav th:replace=header::navs></nav>
+
+			
+			<form th:action="@{/placeorder}" method="post" th:object="${orders}">
+				<input th:value="${total}" name="grand_total" class="grand_total">
+				<input type="text" name="address" placeholder="Delivery Address">
+				<button type="submit">Submit</button>
+			</form>
+	
+				
+				<div class="placeorder_bg">
+				
+					
+				</div>
+			
+<footer th:replace="footer::js"></footer>
+</body>
+</html>

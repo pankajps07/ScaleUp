@@ -1,0 +1,107 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="header::link">
+<meta charset="ISO-8859-1">
+
+</head>
+<body class="sc5">
+	<section class="body_bg">
+		<nav th:replace=header::navs></nav>
+		<!-- ------------------------carousel----------------------------------------------- -->
+
+		<div id="demo" class="carousel slide container-fluid"
+			data-ride="carousel">
+
+			<!-- Indicators -->
+			<ul class="carousel-indicators">
+				<li data-target="#demo" data-slide-to="0" class="active"></li>
+				<li data-target="#demo" data-slide-to="1"></li>
+				<li data-target="#demo" data-slide-to="2"></li>
+			</ul>
+
+			<!-- The slideshow -->
+			<div class="carousel-inner">
+				<div class="carousel-item active">
+					<img th:src="@{img/b1.jpg}" width="100%" height="400px"
+						alt="Los Angeles">
+				</div>
+				<div class="carousel-item">
+					<img th:src="@{img/b2.webp}" width="100%" height="400px"
+						alt="Los Angeles">
+				</div>
+				<div class="carousel-item">
+					<img th:src="@{img/b3.jpg}" width="100%" height="400px"
+						alt="Los Angeles">
+				</div>
+			</div>
+
+			<!-- Left and right controls -->
+			<a class="carousel-control-prev" href="#demo" data-slide="prev">
+				<span class="carousel-control-prev-icon"></span>
+			</a> <a class="carousel-control-next" href="#demo" data-slide="next">
+				<span class="carousel-control-next-icon"></span>
+			</a>
+
+		</div>
+
+		<!-- ================================================Products======================================== -->
+
+		<section class="productMain mt-5">
+			<div class="products container-fluid">
+
+				<div class="text-center">
+					<h2 class="pro_head">
+						<u>Products</u>
+					</h2>
+					<span>Buy any Products</span>
+				</div>
+
+				<div class="pro_row_main">
+					<div class="row my-3 pro_row">
+
+						<div th:each="product : ${listProducts}"
+							class="col-md-2 col-6 pro_card_main" id="pro_card_main">
+							<div class="card pro_card">
+								<a th:href="@{/{pid}(pid=${product.pid})}">
+								<img class="card-img-top pro_img" th:src="${product.p_img}"
+									height="150px" alt="Card image"> </a>
+								<div class="card-body">
+									<h4 class="card-title" th:text="${product.p_name}">Tomato</h4>
+
+									<small th:text="${product.p_details}">Fresh & New</small> <br>
+									<small>Category : <small th:text="${product.p_category}" class="font-weight-bold"></small> <br></small>
+									 <span>Price:<strong th:text="${product.p_price}">30</strong>
+									 <small	class="small_price"> Rs -/Kg</small>
+
+										</p>
+										<a th:href="@{/{pid}(pid=${product.pid})}">
+											<button class="view_btn">
+												<small>View Product</small>
+											</button>
+										</a>
+										
+								</div>
+							</div>
+							
+							
+						</div>
+
+
+
+					</div>
+				</div>
+
+
+				
+			</div>
+		</section>
+
+
+
+
+
+
+		<footer th:replace="footer::js"></footer>
+	</section>
+</body>
+</html>
